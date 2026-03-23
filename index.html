@@ -476,75 +476,56 @@
     }
     .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(91,33,182,.07); }
 
-    /* ── PHOTO CAROUSEL ── */
-    .carousel-section {
-      padding: 4rem 0;
+    /* ── SCATTER BOARD ── */
+    .scatter-section {
+      padding: 4rem 6%;
       border-top: 1px solid var(--border);
-      overflow: hidden;
     }
-    .carousel-section .section-tag,
-    .carousel-section .section-title {
-      padding: 0 6%;
+    .scatter-hint {
+      font-size: .85rem; color: var(--muted);
+      margin-top: .3rem; margin-bottom: 2rem;
     }
-    .carousel-track-wrap {
-      position: relative;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    .carousel-track-wrap::before,
-    .carousel-track-wrap::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0; z-index: 2; width: 80px;
-      pointer-events: none;
-    }
-    .carousel-track-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, var(--bg), transparent);
-    }
-    .carousel-track-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, var(--bg), transparent);
-    }
-    .carousel-track {
-      display: flex; gap: 1.25rem;
-      width: max-content;
-      animation: scroll-carousel 30s linear infinite;
-    }
-    .carousel-track:hover { animation-play-state: paused; }
-    @keyframes scroll-carousel {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .carousel-slide {
-      width: 260px; height: 180px; border-radius: var(--radius);
-      flex-shrink: 0; overflow: hidden; position: relative;
+    .scatter-board {
+      position: relative; height: 520px;
+      border-radius: 16px;
+      background-color: var(--surface);
+      background-image: radial-gradient(circle, rgba(91,33,182,.12) 1px, transparent 1px);
+      background-size: 22px 22px;
       border: 1px solid var(--border);
-      transition: transform .3s, box-shadow .3s;
-      cursor: pointer;
+      overflow: hidden;
+      user-select: none; -webkit-user-select: none;
     }
-    .carousel-slide:hover {
-      transform: scale(1.04);
-      box-shadow: 0 8px 32px rgba(91,33,182,.2);
+    .scatter-photo {
+      position: absolute; width: 210px;
+      background: #fff; border-radius: 16px;
+      padding: 10px 10px 26px;
+      box-shadow: 3px 6px 20px rgba(0,0,0,.13), 0 1px 4px rgba(0,0,0,.07);
+      cursor: grab; transition: box-shadow .25s;
+      z-index: 1; border: 1px solid #ede4ff;
     }
-    .carousel-slide-inner {
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: .5rem;
-      font-size: 3rem;
+    .scatter-photo:hover {
+      box-shadow: 5px 10px 30px rgba(91,33,182,.2), 0 2px 6px rgba(0,0,0,.1);
     }
-    .carousel-slide-label {
-      font-size: .7rem; font-weight: 600; letter-spacing: 1px;
-      text-transform: uppercase; color: rgba(255,255,255,.6);
+    .scatter-photo.dragging {
+      cursor: grabbing;
+      box-shadow: 12px 22px 50px rgba(91,33,182,.24), 0 4px 14px rgba(0,0,0,.13);
+      z-index: 100;
     }
-    .cs-1 { background: linear-gradient(135deg, #1c1432, #2a1448); }
-    .cs-2 { background: linear-gradient(135deg, #0f1b32, #142244); }
-    .cs-3 { background: linear-gradient(135deg, #2a0e22, #3d1235); }
-    .cs-4 { background: linear-gradient(135deg, #0e1f18, #122b20); }
-    .cs-5 { background: linear-gradient(135deg, #221408, #321c0a); }
-    .cs-6 { background: linear-gradient(135deg, #0a1e22, #0e2a2f); }
-    .cs-7 { background: linear-gradient(135deg, #1a0a2e, #2d1060); }
-    .cs-8 { background: linear-gradient(135deg, #1a1000, #2e2200); }
+    .scatter-photo-img {
+      width: 100%; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; border-radius: 10px; overflow: hidden;
+    }
+    .scatter-photo-caption {
+      margin-top: 5px; text-align: center;
+      font-size: .6rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .scatter-board { height: 420px; }
+      .scatter-photo { width: 150px; padding: 8px 8px 22px; border-radius: 12px; }
+      .scatter-photo-img { font-size: 2.2rem; border-radius: 8px; }
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -565,7 +546,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">faithful</a>
+  <a href="#" class="nav-logo">Faithful</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#content">Portfolio</a></li>
@@ -690,25 +671,21 @@
   <div class="services-grid">
 
     <div class="service-card">
-      <div class="service-icon">✏️</div>
       <div class="service-title">Content Creation</div>
       <div class="service-desc">Scroll-stopping copy, captions, graphics, and short-form video tailored to your brand voice and your audience's behaviour.</div>
     </div>
 
     <div class="service-card">
-      <div class="service-icon">📲</div>
       <div class="service-title">Social Media Management</div>
       <div class="service-desc">End-to-end management of your platforms — content calendars, posting, community engagement, analytics, and growth strategy.</div>
     </div>
 
     <div class="service-card">
-      <div class="service-icon">🎯</div>
       <div class="service-title">Brand Strategy</div>
       <div class="service-desc">Positioning, messaging, and visual identity work that makes your brand instantly recognisable and consistently compelling.</div>
     </div>
 
     <div class="service-card">
-      <div class="service-icon">💡</div>
       <div class="service-title">Creative Consulting</div>
       <div class="service-desc">One-on-one strategy sessions for businesses and founders who know what they want to say — and need help saying it memorably.</div>
     </div>
@@ -805,24 +782,12 @@
   </div>
 </div>
 
-<!-- PHOTO CAROUSEL -->
-<div class="carousel-section">
+<!-- SCATTER BOARD -->
+<div class="scatter-section">
   <span class="section-tag">Gallery</span>
-  <h2 class="section-title" style="padding:0 6%;">Behind the Scenes</h2>
-  <div class="carousel-track-wrap">
-    <div class="carousel-track" id="carouselTrack">
-      <!-- Original slides -->
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-1">🎬<span class="carousel-slide-label">On Set</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-2">🌅<span class="carousel-slide-label">Travel</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-4">📸<span class="carousel-slide-label">Photo Shoot</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-5">🎭<span class="carousel-slide-label">Content Creation</span></div></div>
-      <!-- Duplicate for seamless loop -->
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-1">🎬<span class="carousel-slide-label">On Set</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-2">🌅<span class="carousel-slide-label">Travel</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-4">📸<span class="carousel-slide-label">Photo Shoot</span></div></div>
-      <div class="carousel-slide"><div class="carousel-slide-inner cs-5">🎭<span class="carousel-slide-label">Content Creation</span></div></div>
-    </div>
-  </div>
+  <h2 class="section-title">Behind the Scenes</h2>
+  <p class="scatter-hint">Drag the photos around &nbsp;&#8599;</p>
+  <div class="scatter-board" id="scatterBoard"></div>
 </div>
 
 <!-- FOOTER -->
@@ -1148,8 +1113,93 @@
     }
   }
 
+  /* ── SCATTER BOARD ── */
+  var scatterItems = [
+    { emoji: '<img src="1.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#2d1b69,#4c1d95)', caption: 'On Set' ,        x: 3,  y: 5,  rot: -4  },
+    { emoji: '<img src="2.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#0e1f18,#1a4030)', caption: 'Photo Shoot',    x: 22, y: 50, rot:  4  },
+    { emoji: '<img src="3.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#3d0062,#6b0099)', caption: 'Podcast',        x: 40, y: 8,  rot: -2  },
+    { emoji: '<img src="4.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#0f1b32,#1e3a64)', caption: 'Travel',         x: 60, y: 42, rot:  5  },
+    { emoji: '<img src="12.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#1a0028,#3d005a)', caption: 'Creative',       x: 74, y: 6,  rot: -3  },
+    { emoji: '<img src="6.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#061a0c,#0e3820)', caption: 'Impact',         x: 10, y: 55, rot:  6  },
+    { emoji: '<img src="7.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#1e0e04,#4a2208)', caption: 'Strategy',       x: 50, y: 58, rot: -5  },
+    { emoji: '<img src="8.jpg.jpeg" style="width:100%;height:100%;object-fit:cover;" />', bg: 'linear-gradient(135deg,#1a0a2e,#3d1060)', caption: 'Collab',         x: 80, y: 48, rot:  2  }
+  ];
+
+  var activeDrag = null;
+
+  function renderScatterBoard() {
+    var board = document.getElementById('scatterBoard');
+    if (!board) return;
+    scatterItems.forEach(function(item) {
+      var el = document.createElement('div');
+      el.className = 'scatter-photo';
+      el.style.left      = item.x + '%';
+      el.style.top       = item.y + '%';
+      el.style.transform = 'rotate(' + item.rot + 'deg)';
+      el.innerHTML =
+        '<div class="scatter-photo-img" style="background:' + item.bg + '">' + item.emoji + '</div>' +
+        '<div class="scatter-photo-caption">' + item.caption + '</div>';
+
+      el.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        activeDrag = { el: el, board: board,
+          startX: e.clientX, startY: e.clientY,
+          startLeft: el.offsetLeft, startTop: el.offsetTop };
+        el.style.left = el.offsetLeft + 'px';
+        el.style.top  = el.offsetTop  + 'px';
+        el.classList.add('dragging');
+        document.querySelectorAll('.scatter-photo').forEach(function(p) { p.style.zIndex = 1; });
+        el.style.zIndex = 100;
+      });
+
+      el.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        activeDrag = { el: el, board: board,
+          startX: t.clientX, startY: t.clientY,
+          startLeft: el.offsetLeft, startTop: el.offsetTop };
+        el.style.left = el.offsetLeft + 'px';
+        el.style.top  = el.offsetTop  + 'px';
+        el.classList.add('dragging');
+        document.querySelectorAll('.scatter-photo').forEach(function(p) { p.style.zIndex = 1; });
+        el.style.zIndex = 100;
+      }, { passive: false });
+
+      board.appendChild(el);
+    });
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    if (!activeDrag) return;
+    var d = activeDrag;
+    var nl = d.startLeft + (e.clientX - d.startX);
+    var nt = d.startTop  + (e.clientY - d.startY);
+    nl = Math.max(0, Math.min(nl, d.board.offsetWidth  - d.el.offsetWidth));
+    nt = Math.max(0, Math.min(nt, d.board.offsetHeight - d.el.offsetHeight));
+    d.el.style.left = nl + 'px';
+    d.el.style.top  = nt + 'px';
+  });
+  document.addEventListener('mouseup', function() {
+    if (activeDrag) { activeDrag.el.classList.remove('dragging'); activeDrag = null; }
+  });
+  document.addEventListener('touchmove', function(e) {
+    if (!activeDrag) return;
+    e.preventDefault();
+    var t = e.touches[0], d = activeDrag;
+    var nl = d.startLeft + (t.clientX - d.startX);
+    var nt = d.startTop  + (t.clientY - d.startY);
+    nl = Math.max(0, Math.min(nl, d.board.offsetWidth  - d.el.offsetWidth));
+    nt = Math.max(0, Math.min(nt, d.board.offsetHeight - d.el.offsetHeight));
+    d.el.style.left = nl + 'px';
+    d.el.style.top  = nt + 'px';
+  }, { passive: false });
+  document.addEventListener('touchend', function() {
+    if (activeDrag) { activeDrag.el.classList.remove('dragging'); activeDrag = null; }
+  });
+
   /* ── INIT ── */
   renderPortfolio('all');
+  renderScatterBoard();
 </script>
 
 </body>
