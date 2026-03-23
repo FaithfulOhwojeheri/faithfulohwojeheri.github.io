@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faithful Ohwojeheri — Social Media Manager, Brand Strategist and Content Creator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --surface:   #f7f3ff;
+      --border:    #e4d9f7;
+      --accent:    #5b21b6;
+      --accent2:   #7c3aed;
+      --text:      #0e0a1a;
+      --muted:     #6b5e8a;
+      --radius:    12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 6%;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 20px rgba(91,33,182,.06);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 700; letter-spacing: -.5px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .9rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      padding: .5rem 1.25rem; border-radius: 99px; font-size: .875rem;
+      font-weight: 600; cursor: pointer; text-decoration: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 6% 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,33,182,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .35rem 1rem; border-radius: 99px; font-size: .8rem; font-weight: 600;
+      border: 1px solid rgba(91,33,182,.35);
+      background: rgba(91,33,182,.08); color: var(--accent);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(91,33,182,.5); }
+      50%       { box-shadow: 0 0 0 6px rgba(91,33,182,0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 1.08; letter-spacing: -2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent) 20%, var(--accent2) 80%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 540px; font-size: 1.125rem; color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary {
+      padding: .8rem 2rem; border-radius: 99px; font-size: 1rem; font-weight: 600;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 32px rgba(91,33,182,.28);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 40px rgba(91,33,182,.4); }
+
+    .btn-secondary {
+      padding: .8rem 2rem; border-radius: 99px; font-size: 1rem; font-weight: 600;
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border); cursor: pointer; text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(124,92,252,.08); }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+      padding: 3rem 6%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 2rem; font-weight: 800; letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 6%; }
+    .section-tag {
+      display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+      letter-spacing: -.5px; margin-bottom: 1rem; line-height: 1.15;
+    }
+    .section-sub { color: var(--muted); max-width: 500px; margin-bottom: 3rem; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image {
+      width: 100%; aspect-ratio: 1; border-radius: 20px; object-fit: cover;
+      background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 50%, #6d28d9 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7rem; border: 1px solid var(--border);
+    }
+
+    .about-image-wrap::after {
+      content: '';
+      position: absolute; inset: -2px; border-radius: 22px; z-index: -1;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      opacity: .4;
+    }
+
+    .about-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .tag {
+      padding: .35rem .9rem; border-radius: 99px; font-size: .8rem; font-weight: 500;
+      background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-filters {
+      display: flex; gap: .65rem; flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: .42rem 1.1rem; border-radius: 99px; font-size: .78rem; font-weight: 600;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; transition: all .2s; letter-spacing: .3px;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent; color: #fff;
+      box-shadow: 0 0 20px rgba(91,33,182,.28);
+    }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+    .brand-card {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--bg);
+      cursor: pointer; position: relative;
+      transition: transform .3s cubic-bezier(.22,.68,0,1.2), border-color .3s, box-shadow .3s;
+    }
+    /* zigzag entrance */
+    .brand-card.entering { opacity: 0; }
+    .brand-card.entering.from-left {
+      animation: rollFromLeft .55s cubic-bezier(.22,.68,0,1.2) forwards;
+    }
+    .brand-card.entering.from-right {
+      animation: rollFromRight .55s cubic-bezier(.22,.68,0,1.2) forwards;
+    }
+    @keyframes rollFromLeft {
+      from { opacity:0; transform: translateX(-52px) rotate(-2.5deg) scale(.94); }
+      to   { opacity:1; transform: translateX(0) rotate(0) scale(1); }
+    }
+    @keyframes rollFromRight {
+      from { opacity:0; transform: translateX(52px) rotate(2.5deg) scale(.94); }
+      to   { opacity:1; transform: translateX(0) rotate(0) scale(1); }
+    }
+    /* gentle glow + expand on hover */
+    .brand-card::before {
+      content: '';
+      position: absolute; inset: -3px; border-radius: 19px; z-index: -1;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      filter: blur(20px);
+      opacity: 0; transition: opacity .45s ease;
+    }
+    .brand-card:hover {
+      transform: scale(1.03);
+      border-color: rgba(91,33,182,.45);
+      box-shadow: 0 8px 48px rgba(91,33,182,.14);
+    }
+    .brand-card:hover::before {
+      opacity: .3;
+    }
+    .brand-card.hidden { display: none; }
+    .brand-cover { height: 108px; position: relative; }
+    .brand-avatar-wrap {
+      position: absolute; bottom: -22px; left: 1.25rem; z-index: 2;
+    }
+    .brand-avatar {
+      width: 48px; height: 48px; border-radius: 12px;
+      border: 3px solid var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 900; color: rgba(255,255,255,.95); letter-spacing: -.5px;
+    }
+    .brand-platforms {
+      position: absolute; top: .65rem; right: .75rem; z-index: 2;
+      display: flex; gap: .3rem; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .platform-badge {
+      padding: .22rem .6rem; border-radius: 99px; font-size: .62rem; font-weight: 700;
+      letter-spacing: .3px;
+      background: rgba(0,0,0,.52); color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.15); backdrop-filter: blur(6px);
+    }
+    .brand-body { padding: 2rem 1.25rem 1.25rem; }
+    .brand-name { font-size: 1rem; font-weight: 800; margin-bottom: .1rem; }
+    .brand-handle { font-size: .77rem; color: var(--muted); margin-bottom: 1rem; }
+    .brand-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      padding: .75rem .5rem; border-radius: 10px;
+      background: rgba(91,33,182,.04); border: 1px solid var(--border);
+      margin-bottom: 1rem; text-align: center;
+    }
+    .bstat { display: flex; flex-direction: column; align-items: center; }
+    .bstat-val {
+      font-size: .9rem; font-weight: 800; letter-spacing: -.3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .bstat-lbl { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: .08rem; }
+    .brand-desc { font-size: .8rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; }
+    .brand-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .6rem 1rem; border-radius: 8px;
+      background: rgba(91,33,182,.06); border: 1px solid rgba(91,33,182,.25);
+      color: var(--accent); font-size: .78rem; font-weight: 600;
+      transition: background .2s, border-color .2s;
+    }
+    .brand-card:hover .brand-cta { background: rgba(91,33,182,.14); border-color: rgba(91,33,182,.5); color: var(--accent); }
+    .cta-arrow { transition: transform .25s; }
+    .brand-card:hover .cta-arrow { transform: translateX(5px); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.82); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.25rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; width: 100%; max-width: 840px; max-height: 88vh;
+      overflow-y: auto; position: relative;
+      transform: scale(.94) translateY(24px);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+    }
+    .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem; z-index: 10;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.12);
+      color: #fff; font-size: .9rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,.15); }
+    .modal-cover { height: 150px; border-radius: 20px 20px 0 0; position: relative; overflow: hidden; }
+    .modal-cover-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,.62));
+    }
+    .modal-header-row {
+      position: absolute; bottom: 1rem; left: 1.5rem;
+      display: flex; align-items: flex-end; gap: 1rem; z-index: 2;
+    }
+    .modal-avatar {
+      width: 60px; height: 60px; border-radius: 14px;
+      border: 3px solid var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900; color: rgba(255,255,255,.95);
+    }
+    .modal-title { font-size: 1.25rem; font-weight: 800; color: #fff; line-height: 1.2; }
+    .modal-handle { font-size: .82rem; color: rgba(255,255,255,.65); }
+    .modal-badges { display: flex; gap: .35rem; margin-top: .3rem; }
+    .modal-body {
+      padding: 1.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    @media (max-width: 600px) { .modal-body { grid-template-columns: 1fr; } }
+    .modal-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .65rem;
+    }
+    .modal-text { font-size: .88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.5rem; }
+    .modal-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; margin-bottom: 1.5rem; }
+    .modal-list li { font-size: .84rem; color: var(--muted); padding-left: 1.1rem; position: relative; line-height: 1.45; }
+    .modal-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    .modal-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: 1.5rem; }
+    .modal-sbox {
+      padding: .9rem 1rem; border-radius: 10px;
+      background: rgba(91,33,182,.05); border: 1px solid var(--border);
+    }
+    .modal-links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .65rem; }
+    .modal-link-btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .42rem 1rem; border-radius: 99px; font-size: .76rem; font-weight: 600;
+      background: transparent; border: 1px solid var(--accent);
+      color: var(--accent); text-decoration: none;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .modal-link-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+    .modal-sval {
+      font-size: 1.15rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .modal-slbl { font-size: .68rem; color: var(--muted); margin-top: .12rem; text-transform: uppercase; letter-spacing: .5px; }
+    .modal-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+    .feed-post {
+      aspect-ratio: 1; border-radius: 7px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; cursor: pointer; position: relative;
+      transition: transform .2s;
+    }
+    .feed-post:hover { transform: scale(1.06); z-index: 1; }
+    .feed-likes {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.58);
+      font-size: .72rem; font-weight: 700; color: #fff;
+      opacity: 0; transition: opacity .2s; border-radius: 7px;
+    }
+    .feed-post:hover .feed-likes { opacity: 1; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--surface); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;
+    }
+
+    .service-card {
+      padding: 2rem; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--bg);
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .service-card:hover { border-color: rgba(91,33,182,.45); box-shadow: 0 0 30px rgba(91,33,182,.1); }
+
+    .service-icon {
+      font-size: 2rem; margin-bottom: 1rem;
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(91,33,182,.1); border: 1px solid rgba(91,33,182,.25);
+    }
+    .service-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .service-desc { font-size: .875rem; color: var(--muted); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      padding: 1.75rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius);
+    }
+    .stars { color: #f5c518; margin-bottom: 1rem; font-size: .875rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: .75rem; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .author-name { font-weight: 700; font-size: .9rem; }
+    .author-role { font-size: .75rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--surface); }
+    .contact-inner {
+      max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .contact-inner .section-sub { margin-left: auto; margin-right: auto; }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1rem; text-align: left;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-label { font-size: .8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    .form-input, .form-textarea {
+      padding: .75rem 1rem; border-radius: var(--radius); font-size: .95rem;
+      background: var(--bg); border: 1px solid var(--border); color: var(--text);
+      outline: none; transition: border-color .2s;
+      font-family: inherit;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      padding: .9rem; border-radius: 99px; font-size: 1rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 0 28px rgba(91,33,182,.25);
+    }
+    .form-submit:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── SOCIAL BAR ── */
+    .social-bar {
+      padding: 3rem 6%; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .social-bar p { color: var(--muted); font-size: .875rem; margin-bottom: 1.5rem; }
+    .social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+    .social-link {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .6rem 1.25rem; border-radius: 99px; font-size: .875rem; font-weight: 600;
+      border: 1px solid var(--border); color: var(--muted);
+      text-decoration: none; background: var(--surface);
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(91,33,182,.07); }
+
+    /* ── PHOTO CAROUSEL ── */
+    .carousel-section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .carousel-section .section-tag,
+    .carousel-section .section-title {
+      padding: 0 6%;
+    }
+    .carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .carousel-track-wrap::before,
+    .carousel-track-wrap::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; z-index: 2; width: 80px;
+      pointer-events: none;
+    }
+    .carousel-track-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+    .carousel-track-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+    .carousel-track {
+      display: flex; gap: 1.25rem;
+      width: max-content;
+      animation: scroll-carousel 30s linear infinite;
+    }
+    .carousel-track:hover { animation-play-state: paused; }
+    @keyframes scroll-carousel {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carousel-slide {
+      width: 260px; height: 180px; border-radius: var(--radius);
+      flex-shrink: 0; overflow: hidden; position: relative;
+      border: 1px solid var(--border);
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .carousel-slide:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(91,33,182,.2);
+    }
+    .carousel-slide-inner {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .5rem;
+      font-size: 3rem;
+    }
+    .carousel-slide-label {
+      font-size: .7rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+    }
+    .cs-1 { background: linear-gradient(135deg, #1c1432, #2a1448); }
+    .cs-2 { background: linear-gradient(135deg, #0f1b32, #142244); }
+    .cs-3 { background: linear-gradient(135deg, #2a0e22, #3d1235); }
+    .cs-4 { background: linear-gradient(135deg, #0e1f18, #122b20); }
+    .cs-5 { background: linear-gradient(135deg, #221408, #321c0a); }
+    .cs-6 { background: linear-gradient(135deg, #0a1e22, #0e2a2f); }
+    .cs-7 { background: linear-gradient(135deg, #1a0a2e, #2d1060); }
+    .cs-8 { background: linear-gradient(135deg, #1a1000, #2e2200); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 6%;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">faithful</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#content">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Work With Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span></span> Available for Collaborations</div>
+  <h1>Creating Content<br>That <span class="gradient">Actually Works</span></h1>
+  <p>I'm a social media manager, brand strategist, storyteller, and digital creator helping brands and ideas reach the people who care about them.</p>
+  <div class="hero-btns">
+    <a href="#content" class="btn-primary">See My Work</a>
+    <a href="#contact" class="btn-secondary">Let's Collaborate</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-number">1.6K+</div>
+    <div class="stat-label">Total Followers</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">1M+</div>
+    <div class="stat-label">Views This Year</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">200+</div>
+    <div class="stat-label">Videos Published</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Brand Partners</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap">
+      <img class="about-image" src="faithful.jpg.png" alt="Faithful Ohwojeheri" />
+    </div>
+    <div>
+      <span class="section-tag">About Me</span>
+      <h2 class="section-title">Where Strategy Meets Story — and Brands Come Alive</h2>
+      <p style="color:var(--muted); margin-bottom:1rem;">
+        Hey, I'm Faithful - a brand strategist, social media manager, and content creator who believes that the right words on the right platform at the right time can change everything for a brand. I help businesses and personal brands build purposeful digital presences that attract, engage, and convert.
+      </p>
+      <p style="color:var(--muted); margin-bottom:1.5rem;">
+        From managing multi-platform communities to developing content strategies from the ground up, I bring structure to creative ideas and creativity to strategic goals. My work spans startups, NGOs, personal brands, and everything in between across Instagram, Facebook, LinkedIn, and beyond.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Social Media Management</span>
+        <span class="tag">Brand Strategy</span>
+        <span class="tag">Content Creation</span>
+        <span class="tag">Creative Consulting</span>
+        <span class="tag">Tech</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="content" style="background:var(--surface);">
+  <span class="section-tag">Portfolio</span>
+  <h2 class="section-title">Brands I've Grown</h2>
+  <p class="section-sub">Social media management, brand strategy, content creation, and community building across platforms.</p>
+
+  <div class="portfolio-filters" id="portfolioFilters">
+    <button class="filter-btn active" data-filter="all">All Platforms</button>
+    <button class="filter-btn" data-filter="Instagram">Instagram</button>
+    <button class="filter-btn" data-filter="Facebook">Facebook</button>
+    <button class="filter-btn" data-filter="LinkedIn">LinkedIn</button>
+  </div>
+
+  <div class="portfolio-grid" id="portfolioGrid"></div>
+</section>
+
+<!-- PORTFOLIO MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" id="modalClose">&#10005;</button>
+    <div class="modal-cover" id="modalCover">
+      <div class="modal-cover-overlay"></div>
+      <div class="modal-header-row">
+        <div class="modal-avatar" id="modalAvatar"></div>
+        <div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-handle" id="modalHandle"></div>
+          <div class="modal-badges" id="modalBadges"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="modal-label">About This Brand</div>
+        <p class="modal-text" id="modalDesc"></p>
+        <div class="modal-label">Key Achievements</div>
+        <ul class="modal-list" id="modalList"></ul>
+        <div class="modal-label">Visit Profiles</div>
+        <div class="modal-links" id="modalLinks"></div>
+      </div>
+      <div>
+        <div class="modal-label">Results</div>
+        <div class="modal-stats-grid" id="modalStatsGrid"></div>
+        <div class="modal-label" style="margin-top:1.25rem;">Content Highlights</div>
+        <div class="modal-feed" id="modalFeed"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <span class="section-tag">Services</span>
+  <h2 class="section-title">How We Can Work Together</h2>
+  <p class="section-sub">Everything you need to make your brand unforgettable.</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">✏️</div>
+      <div class="service-title">Content Creation</div>
+      <div class="service-desc">Scroll-stopping copy, captions, graphics, and short-form video tailored to your brand voice and your audience's behaviour.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📲</div>
+      <div class="service-title">Social Media Management</div>
+      <div class="service-desc">End-to-end management of your platforms — content calendars, posting, community engagement, analytics, and growth strategy.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <div class="service-title">Brand Strategy</div>
+      <div class="service-desc">Positioning, messaging, and visual identity work that makes your brand instantly recognisable and consistently compelling.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💡</div>
+      <div class="service-title">Creative Consulting</div>
+      <div class="service-desc">One-on-one strategy sessions for businesses and founders who know what they want to say — and need help saying it memorably.</div>
+    </div>
+
+  </div>
+</section>
+
+<!--TESTIMONIALS -->
+<!-- TESTIMONIALS HIDDEN — to show it, remove the style="display:none;" attribute below -->
+<section id="testimonials" style="display:none;">
+  <span class="section-tag">Testimonials</span>
+  <h2 class="section-title">What People Are Saying</h2>
+  <p class="section-sub">From brand managers to fellow creators, here's what they thought.</p>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Alex's integration of our product felt so natural that our DMs flooded with questions from their audience. Best ROI we've seen from any creator campaign."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩</div>
+        <div>
+          <div class="author-name">Sarah L.</div>
+          <div class="author-role">Head of Marketing, Luminary Co.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Worked with Alex on a 3-video series and the production quality blew our entire team away. They think visually in a way most creators just don't."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨</div>
+        <div>
+          <div class="author-name">Marcus T.</div>
+          <div class="author-role">Brand Director, Forge Gear</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I've collaborated with dozens of creators. Alex is one of the very few who truly understands both storytelling and community. A rare combination."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">🧑</div>
+        <div>
+          <div class="author-name">Jamie K.</div>
+          <div class="author-role">Creator & Co-founder, Studio 99</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <span class="section-tag">Contact</span>
+    <h2 class="section-title">Let's Make Something Great</h2>
+    <p class="section-sub">Have a project in mind? Fill out the form and I'll get back to you within 48 hours.</p>
+    <!-- Formspree: replace YOUR_FORM_ID with your ID from formspree.io -->
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" id="name" name="name" type="text" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" name="email" type="email" placeholder="jane@company.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Type of Collab</label>
+        <input class="form-input" id="subject" name="subject" type="text" placeholder="e.g. Content Creation, Brand Strategy..." />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Tell Me More</label>
+        <textarea class="form-textarea" id="message" name="message" placeholder="Share your idea, budget range, timeline..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="formSubmitBtn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <p>Find me across platforms</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/i.am.oghenekaroyovwe" class="social-link">Instagram</a>
+    <a href="https://www.tiktok.com/@doseofelyon" class="social-link">TikTok</a>
+    <a href="https://x.com/thecontentgurl" class="social-link">Twitter / X</a>
+    <a href="https://www.linkedin.com/in/ohwojeheri-faithful" class="social-link">LinkedIn</a>
+  </div>
+</div>
+
+<!-- PHOTO CAROUSEL -->
+<div class="carousel-section">
+  <span class="section-tag">Gallery</span>
+  <h2 class="section-title" style="padding:0 6%;">Behind the Scenes</h2>
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Original slides -->
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-1">🎬<span class="carousel-slide-label">On Set</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-2">🌅<span class="carousel-slide-label">Travel</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-4">📸<span class="carousel-slide-label">Photo Shoot</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-5">🎭<span class="carousel-slide-label">Content Creation</span></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-1">🎬<span class="carousel-slide-label">On Set</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-2">🌅<span class="carousel-slide-label">Travel</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-4">📸<span class="carousel-slide-label">Photo Shoot</span></div></div>
+      <div class="carousel-slide"><div class="carousel-slide-inner cs-5">🎭<span class="carousel-slide-label">Content Creation</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Faithful Ohwojeheri. All rights reserved.</p>
+</footer>
+
+<script>
+  /* ── PORTFOLIO DATA ──
+     Stats marked * are LinkedIn-verified. Update follower/engagement
+     numbers below with your actual managed-account metrics. */
+  const brands = [
+    {
+      id: 'trippicker',
+      name: 'TripPicker',
+      handle: '@trippickerng',
+      platforms: ['Instagram', 'LinkedIn'],
+      cover: 'linear-gradient(135deg, #020b1e 0%, #091840 55%, #1a2d80 100%)',
+      avatarBg: 'linear-gradient(135deg, #3a5cff, #7c3aed)',
+      initials: 'TP',
+      stats: [
+        { val: '36*', lbl: 'LinkedIn Followers' },
+        { val: '—', lbl: 'Eng. Rate' },
+        { val: '2024', lbl: 'Founded' }
+      ],
+      profileLinks: [
+        { label: 'Instagram', url: 'https://www.instagram.com/trippickerng/' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/company/trippickerng/' }
+      ],
+      desc: 'Web3 mobility ecosystem combining ride-hailing with blockchain. Drive. Ride. Mine. Earn. Africa\'s next-gen super-app built for the world — founded 2024.',
+      achievements: [
+        'Established brand voice across Instagram and LinkedIn from day one',
+        'Translated complex Web3 and blockchain concepts for mainstream audiences',
+        'Built early community around TripperCoin (TPCM) and Proof of Distance mining',
+        'Positioned TripPicker as Africa\'s first Web3 mobility super-app',
+        'Developed content strategy across ride-hailing, logistics, rentals and lifestyle verticals'
+      ],
+      modalStats: [
+        { val: '36+', lbl: 'LinkedIn Followers' },
+        { val: '2024', lbl: 'Brand Launch Year' },
+        { val: '2', lbl: 'Platforms Managed' },
+        { val: 'Web3', lbl: 'Industry' }
+      ],
+      feed: [
+        { emoji: '\uD83D\uDE97', bg: 'linear-gradient(135deg,#020b1e,#091840)', likes: '—' },
+        { emoji: '\u26D3\uFE0F', bg: 'linear-gradient(135deg,#091840,#1a2d80)', likes: '—' },
+        { emoji: '\uD83E\uDE99', bg: 'linear-gradient(135deg,#0d1a4a,#1e2e8c)', likes: '—' },
+        { emoji: '\uD83D\uDCF1', bg: 'linear-gradient(135deg,#060c28,#12205e)', likes: '—' },
+        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#080f30,#152460)', likes: '—' },
+        { emoji: '\uD83D\uDD17', bg: 'linear-gradient(135deg,#0a1436,#162a70)', likes: '—' }
+      ]
+    },
+    {
+      id: 'isimeme',
+      name: 'Isimeme Whyte',
+      handle: '@isimemewhyte',
+      platforms: ['Instagram', 'Facebook', 'LinkedIn'],
+      cover: 'linear-gradient(135deg, #071424 0%, #122840 55%, #1e4870 100%)',
+      avatarBg: 'linear-gradient(135deg, #1e6e7a, #2ea8c0)',
+      initials: 'IW',
+      stats: [
+        { val: '6K+', lbl: 'LinkedIn Followers' },
+        { val: '500+', lbl: 'Connections' },
+        { val: '3', lbl: 'Platforms' }
+      ],
+      profileLinks: [
+        { label: 'Instagram', url: 'https://www.instagram.com/isimemewhyte/' },
+        { label: 'Facebook', url: 'https://www.facebook.com/share/181p8Q6GhJ/' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/isimeme-whyte' }
+      ],
+      desc: 'Development professional, certified project manager, sustainability advocate, and speaker. Empowering leaders and organisations across Africa with field-grounded expertise.',
+      achievements: [
+        'Built LinkedIn personal brand to 6K+ followers from Ikpoba-Okha, Edo State',
+        'Amplified thought leadership content on sustainability and project delivery',
+        'Managed multi-platform visibility across Instagram, Facebook, and LinkedIn',
+        'Supported personal brand positioning as a keynote speaker at Project Leadership Summit',
+        'Drove engagement on publications including co-authored SE4G step-by-step book'
+      ],
+      modalStats: [
+        { val: '6K+', lbl: 'LinkedIn Followers' },
+        { val: '500+', lbl: 'LinkedIn Connections' },
+        { val: '3', lbl: 'Platforms Managed' },
+        { val: 'Nigeria', lbl: 'Based In' }
+      ],
+      feed: [
+        { emoji: '\uD83C\uDFA4', bg: 'linear-gradient(135deg,#071424,#122840)', likes: '—' },
+        { emoji: '\uD83D\uDCCA', bg: 'linear-gradient(135deg,#0e1e38,#1e3458)', likes: '—' },
+        { emoji: '\uD83C\uDF31', bg: 'linear-gradient(135deg,#0c1830,#183050)', likes: '—' },
+        { emoji: '\uD83E\uDD1D', bg: 'linear-gradient(135deg,#101e3a,#1c3460)', likes: '—' },
+        { emoji: '\uD83D\uDCDD', bg: 'linear-gradient(135deg,#0a1830,#162e50)', likes: '—' },
+        { emoji: '\uD83D\uDCA1', bg: 'linear-gradient(135deg,#0e2038,#1a3660)', likes: '—' }
+      ]
+    },
+    {
+      id: 'geniushub',
+      name: 'Genius Hub',
+      handle: '@geniushubglobal',
+      platforms: ['Facebook', 'LinkedIn'],
+      cover: 'linear-gradient(135deg, #061a0c 0%, #0e3820 55%, #1a6640 100%)',
+      avatarBg: 'linear-gradient(135deg, #1a8c50, #30c468)',
+      initials: 'GH',
+      stats: [
+        { val: '1.6K+', lbl: 'LinkedIn Followers' },
+        { val: '2015', lbl: 'Founded' },
+        { val: '2', lbl: 'LinkedIn Pages' }
+      ],
+      profileLinks: [
+        { label: 'Facebook', url: 'https://www.facebook.com/share/1DME1XaxV1/' },
+        { label: 'LinkedIn — Business', url: 'https://www.linkedin.com/company/genius-hub-business-services/' },
+        { label: 'LinkedIn — Initiative', url: 'https://www.linkedin.com/company/genius-hub-global-initiative/' }
+      ],
+      desc: 'EdTech and vocational training organisation bridging the skills gap in Africa through TVET, digital skills, entrepreneurship, and film-making. Benin City, Nigeria.',
+      achievements: [
+        'Managed two LinkedIn pages — Business Services (827 followers) and Global Initiative (798 followers)',
+        'Built content strategy around youth empowerment, women\'s education and digital skills',
+        'Amplified programmes including Fashion AI, Web Dev, UI/UX, and Photography training',
+        'Coordinated social campaigns for Radio Girls, GSMP, and Young Girls Foundation',
+        'Drove awareness for mental health and psychosocial support programmes via social media'
+      ],
+      modalStats: [
+        { val: '1.6K+', lbl: 'Combined LinkedIn Followers' },
+        { val: '827', lbl: 'Business Services Page' },
+        { val: '798', lbl: 'Global Initiative Page' },
+        { val: '2015', lbl: 'Organisation Founded' }
+      ],
+      feed: [
+        { emoji: '\uD83C\uDF93', bg: 'linear-gradient(135deg,#061a0c,#0e3820)', likes: '—' },
+        { emoji: '\uD83D\uDCBB', bg: 'linear-gradient(135deg,#0a2010,#142e1a)', likes: '—' },
+        { emoji: '\u2702\uFE0F', bg: 'linear-gradient(135deg,#0c2412,#163620)', likes: '—' },
+        { emoji: '\uD83C\uDFAC', bg: 'linear-gradient(135deg,#081c0e,#122a18)', likes: '—' },
+        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#0e2814,#1a381c)', likes: '—' },
+        { emoji: '\uD83D\uDC69\u200D\uD83D\uDCBB', bg: 'linear-gradient(135deg,#0a2010,#162c1c)', likes: '—' }
+      ]
+    },
+    {
+      id: 'hermigration',
+      name: 'Her Migration Voice',
+      handle: '@hermigrationvoice',
+      platforms: ['Instagram', 'Facebook', 'LinkedIn'],
+      cover: 'linear-gradient(135deg, #280a20 0%, #5c1a40 55%, #9c2e5a 100%)',
+      avatarBg: 'linear-gradient(135deg, #b83060, #e05080)',
+      initials: 'HM',
+      stats: [
+        { val: '223*', lbl: 'LinkedIn Followers' },
+        { val: '3', lbl: 'Platforms' },
+        { val: 'NGO', lbl: 'Sector' }
+      ],
+      profileLinks: [
+        { label: 'Instagram', url: 'https://www.instagram.com/hermigrationvoice' },
+        { label: 'Facebook', url: 'https://www.facebook.com/share/19cY2WjxKP/' },
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/showcase/her-migration-voice/' }
+      ],
+      desc: 'An initiative of Genius Hub enlightening women on the dangers of unsafe migration — tackling root causes through digital skills, entrepreneurship, and community empowerment.',
+      achievements: [
+        'Built multi-platform social presence across Instagram, Facebook and LinkedIn',
+        'Grew LinkedIn showcase page to 223+ followers',
+        'Produced awareness content reaching women at risk of unsafe migration',
+        'Amplified empowerment and digital skills training programmes',
+        'Drove engagement on migration advocacy, reintegration and mental health support content'
+      ],
+      modalStats: [
+        { val: '223+', lbl: 'LinkedIn Followers' },
+        { val: '3', lbl: 'Platforms Managed' },
+        { val: 'NGO', lbl: 'Organisation Type' },
+        { val: 'Nigeria', lbl: 'Based In' }
+      ],
+      feed: [
+        { emoji: '\uD83C\uDF38', bg: 'linear-gradient(135deg,#280a20,#4a1438)', likes: '—' },
+        { emoji: '\u270A', bg: 'linear-gradient(135deg,#30102a,#561e48)', likes: '—' },
+        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#2c0e24,#501a3e)', likes: '—' },
+        { emoji: '\uD83D\uDCAA', bg: 'linear-gradient(135deg,#280c22,#4c1840)', likes: '—' },
+        { emoji: '\uD83D\uDCE3', bg: 'linear-gradient(135deg,#2e0e26,#521c44)', likes: '—' },
+        { emoji: '\uD83E\uDD1D', bg: 'linear-gradient(135deg,#2a0c20,#4e1a3c)', likes: '—' }
+      ]
+    }
+  ];
+
+  /* ── RENDER CARDS ── */
+  function renderPortfolio(filter) {
+    var grid = document.getElementById('portfolioGrid');
+    grid.innerHTML = '';
+    var idx = 0;
+    brands.forEach(function(b) {
+      var visible = filter === 'all' || b.platforms.some(function(p) { return p === filter; });
+      if (!visible) return;
+      var card = document.createElement('div');
+      var dir = idx % 2 === 0 ? 'from-left' : 'from-right';
+      card.className = 'brand-card entering ' + dir;
+      card.style.animationDelay = (idx * 90) + 'ms';
+      card.dataset.id = b.id;
+      card.innerHTML =
+        '<div class="brand-cover" style="background:' + b.cover + '">' +
+          '<div class="brand-avatar-wrap">' +
+            '<div class="brand-avatar" style="background:' + b.avatarBg + '">' + b.initials + '</div>' +
+          '</div>' +
+          '<div class="brand-platforms">' +
+            b.platforms.map(function(p) { return '<span class="platform-badge">' + p + '</span>'; }).join('') +
+          '</div>' +
+        '</div>' +
+        '<div class="brand-body">' +
+          '<div class="brand-name">' + b.name + '</div>' +
+          '<div class="brand-handle">' + b.handle + '</div>' +
+          '<div class="brand-stats">' +
+            b.stats.map(function(s) {
+              return '<div class="bstat"><div class="bstat-val">' + s.val + '</div><div class="bstat-lbl">' + s.lbl + '</div></div>';
+            }).join('') +
+          '</div>' +
+          '<div class="brand-desc">' + b.desc + '</div>' +
+          '<div class="brand-cta"><span>View Case Study</span><span class="cta-arrow">&rarr;</span></div>' +
+        '</div>';
+      /* after entrance animation ends, free the card for normal hover transitions */
+      card.addEventListener('animationend', function() {
+        card.classList.remove('entering', 'from-left', 'from-right');
+        card.style.opacity = '1';
+        card.style.animationDelay = '';
+      }, { once: true });
+      card.addEventListener('click', function() { openModal(b); });
+      grid.appendChild(card);
+      idx++;
+    });
+  }
+
+  /* ── FILTER ── */
+  document.getElementById('portfolioFilters').addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderPortfolio(btn.dataset.filter);
+  });
+
+  /* ── MODAL ── */
+  function openModal(b) {
+    document.getElementById('modalCover').style.background = b.cover;
+    document.getElementById('modalAvatar').style.background = b.avatarBg;
+    document.getElementById('modalAvatar').textContent = b.initials;
+    document.getElementById('modalTitle').textContent = b.name;
+    document.getElementById('modalHandle').textContent = b.handle;
+    document.getElementById('modalBadges').innerHTML =
+      b.platforms.map(function(p) { return '<span class="platform-badge">' + p + '</span>'; }).join('');
+    document.getElementById('modalDesc').textContent = b.desc;
+    document.getElementById('modalList').innerHTML =
+      b.achievements.map(function(a) { return '<li>' + a + '</li>'; }).join('');
+    document.getElementById('modalLinks').innerHTML =
+      b.profileLinks.map(function(l) {
+        return '<a class="modal-link-btn" href="' + l.url + '" target="_blank" rel="noopener">&#8599; ' + l.label + '</a>';
+      }).join('');
+    document.getElementById('modalStatsGrid').innerHTML =
+      b.modalStats.map(function(s) {
+        return '<div class="modal-sbox"><div class="modal-sval">' + s.val + '</div><div class="modal-slbl">' + s.lbl + '</div></div>';
+      }).join('');
+    document.getElementById('modalFeed').innerHTML =
+      b.feed.map(function(f) {
+        return '<div class="feed-post" style="background:' + f.bg + '">' +
+          f.emoji +
+          '<div class="feed-likes">&#9829; ' + f.likes + '</div>' +
+        '</div>';
+      }).join('');
+    document.getElementById('modalBox').scrollTop = 0;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  /* ── CONTACT FORM (Google Forms) ──────────────────────────────────
+     HOW TO SET UP (one-time):
+     1. Go to forms.google.com → create a form with 4 Short Answer
+        questions: Name, Email, Type of Collab, Message.
+     2. Click the ⋮ menu top-right → "Get pre-filled link".
+        Dummy-fill every field, click "Get Link", copy the URL.
+     3. In that URL find the parts like  entry.1234567890=dummy
+        — each entry.XXXXXXXXXX is the field ID for that question.
+     4. Copy your form's /formResponse URL and paste it into GF_ACTION,
+        then paste the four entry IDs into the variables below.
+     ──────────────────────────────────────────────────────────────── */
+  var GF_ACTION  = 'https://docs.google.com/forms/d/e/1FAIpQLScL7xwNY-WnZbb51G031g1OuiCn5pMCdexlM9ZEyQivaJDCRg/formResponse';
+  var GF_NAME    = 'entry.943199452';
+  var GF_EMAIL   = 'entry.2036433731';
+  var GF_SUBJECT = 'entry.1116816088';
+  var GF_MESSAGE = 'entry.1396834937';
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    var btn  = document.getElementById('formSubmitBtn');
+    var form = e.target;
+    btn.textContent = 'Sending\u2026';
+    btn.disabled = true;
+
+    var body = new URLSearchParams();
+    body.append(GF_NAME,    form.name.value);
+    body.append(GF_EMAIL,   form.email.value);
+    body.append(GF_SUBJECT, form.subject.value);
+    body.append(GF_MESSAGE, form.message.value);
+
+    try {
+      /* Google Forms has no CORS headers, so mode:'no-cors' is required.
+         The response is opaque — we can't read it, but a successful
+         network call means the submission went through. */
+      await fetch(GF_ACTION, { method: 'POST', mode: 'no-cors', body: body });
+      btn.textContent = 'Message Sent!';
+      btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+      form.reset();
+      setTimeout(function() {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
+    } catch (err) {
+      btn.textContent = 'Error — Try Again';
+      btn.style.background = 'linear-gradient(135deg,#dc2626,#b91c1c)';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'Send Message'; btn.style.background = ''; }, 3500);
+    }
+  }
+
+  /* ── INIT ── */
+  renderPortfolio('all');
+</script>
+
+</body>
+</html>
