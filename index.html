@@ -382,6 +382,10 @@
       opacity: 0; transition: opacity .2s; border-radius: 7px;
     }
     .feed-post:hover .feed-likes { opacity: 1; }
+    .feed-num {
+      font-size: .55rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+    }
 
     /* ── SERVICES ── */
     .services { background: var(--surface); }
@@ -420,7 +424,7 @@
     .author-avatar {
       width: 40px; height: 40px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
+      font-size: .72rem; font-weight: 700; color: #fff; letter-spacing: .5px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
     }
     .author-name { font-weight: 700; font-size: .9rem; }
@@ -705,7 +709,7 @@
       <div class="stars">★★★★★</div>
       <p class="testimonial-text">"Alex's integration of our product felt so natural that our DMs flooded with questions from their audience. Best ROI we've seen from any creator campaign."</p>
       <div class="testimonial-author">
-        <div class="author-avatar">👩</div>
+        <div class="author-avatar">SL</div>
         <div>
           <div class="author-name">Sarah L.</div>
           <div class="author-role">Head of Marketing, Luminary Co.</div>
@@ -717,7 +721,7 @@
       <div class="stars">★★★★★</div>
       <p class="testimonial-text">"Worked with Alex on a 3-video series and the production quality blew our entire team away. They think visually in a way most creators just don't."</p>
       <div class="testimonial-author">
-        <div class="author-avatar">👨</div>
+        <div class="author-avatar">MT</div>
         <div>
           <div class="author-name">Marcus T.</div>
           <div class="author-role">Brand Director, Forge Gear</div>
@@ -729,7 +733,7 @@
       <div class="stars">★★★★★</div>
       <p class="testimonial-text">"I've collaborated with dozens of creators. Alex is one of the very few who truly understands both storytelling and community. A rare combination."</p>
       <div class="testimonial-author">
-        <div class="author-avatar">🧑</div>
+        <div class="author-avatar">JK</div>
         <div>
           <div class="author-name">Jamie K.</div>
           <div class="author-role">Creator & Co-founder, Studio 99</div>
@@ -797,8 +801,8 @@
 
 <script>
   /* ── PORTFOLIO DATA ──
-     Stats marked * are LinkedIn-verified. Update follower/engagement
-     numbers below with your actual managed-account metrics. */
+     Update follower counts, reach and engagement rate below
+     with your actual managed-account metrics. */
   const brands = [
     {
       id: 'trippicker',
@@ -809,9 +813,9 @@
       avatarBg: 'linear-gradient(135deg, #3a5cff, #7c3aed)',
       initials: 'TP',
       stats: [
-        { val: '36*', lbl: 'LinkedIn Followers' },
-        { val: '—', lbl: 'Eng. Rate' },
-        { val: '2024', lbl: 'Founded' }
+        { val: '130+', lbl: 'Total Followers' },
+        { val: '40K+', lbl: 'Reach / Impressions' },
+        { val: '30.769%', lbl: 'Engagement Rate' }
       ],
       profileLinks: [
         { label: 'Instagram', url: 'https://www.instagram.com/trippickerng/' },
@@ -819,25 +823,103 @@
       ],
       desc: 'Web3 mobility ecosystem combining ride-hailing with blockchain. Drive. Ride. Mine. Earn. Africa\'s next-gen super-app built for the world — founded 2024.',
       achievements: [
-        'Established brand voice across Instagram and LinkedIn from day one',
+        'Established brand voice across platforms',
         'Translated complex Web3 and blockchain concepts for mainstream audiences',
         'Built early community around TripperCoin (TPCM) and Proof of Distance mining',
         'Positioned TripPicker as Africa\'s first Web3 mobility super-app',
         'Developed content strategy across ride-hailing, logistics, rentals and lifestyle verticals'
       ],
       modalStats: [
-        { val: '36+', lbl: 'LinkedIn Followers' },
-        { val: '2024', lbl: 'Brand Launch Year' },
-        { val: '2', lbl: 'Platforms Managed' },
-        { val: 'Web3', lbl: 'Industry' }
+        { val: '130+', lbl: 'Total Followers' },
+        { val: '40K+', lbl: 'Reach / Impressions' },
+        { val: '30.769%', lbl: 'Engagement Rate' },
+        { val: 'Web3 / Mobility', lbl: 'Sector' }
       ],
       feed: [
-        { emoji: '\uD83D\uDE97', bg: 'linear-gradient(135deg,#020b1e,#091840)', likes: '—' },
-        { emoji: '\u26D3\uFE0F', bg: 'linear-gradient(135deg,#091840,#1a2d80)', likes: '—' },
-        { emoji: '\uD83E\uDE99', bg: 'linear-gradient(135deg,#0d1a4a,#1e2e8c)', likes: '—' },
-        { emoji: '\uD83D\uDCF1', bg: 'linear-gradient(135deg,#060c28,#12205e)', likes: '—' },
-        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#080f30,#152460)', likes: '—' },
-        { emoji: '\uD83D\uDD17', bg: 'linear-gradient(135deg,#0a1436,#162a70)', likes: '—' }
+        { src: 'feed_trippicker_1.jpg', bg: 'linear-gradient(135deg,#020b1e,#091840)', likes: '--' },
+        { src: 'feed_trippicker_2.jpg', bg: 'linear-gradient(135deg,#091840,#1a2d80)', likes: '--' },
+        { src: 'feed_trippicker_3.jpg', bg: 'linear-gradient(135deg,#0d1a4a,#1e2e8c)', likes: '--' },
+        { src: 'feed_trippicker_4.jpg', bg: 'linear-gradient(135deg,#060c28,#12205e)', likes: '--' },
+        { src: 'feed_trippicker_5.jpg', bg: 'linear-gradient(135deg,#080f30,#152460)', likes: '--' },
+        { src: 'feed_trippicker_6.jpg', bg: 'linear-gradient(135deg,#0a1436,#162a70)', likes: '--' }
+      ]
+    },
+    {
+      id: 'hairgrid',
+      name: 'The Hair Grid',
+      handle: '@thehairgrid_',
+      platforms: ['Instagram'],
+      cover: 'linear-gradient(135deg, #1a0e06 0%, #3d2210 55%, #7a4a20 100%)',
+      avatarBg: 'linear-gradient(135deg, #8c5a20, #c8863a)',
+      initials: 'HG',
+      stats: [
+        { val: '40+', lbl: 'Total Followers' },
+        { val: '4K+', lbl: 'Reach / Impressions' },
+        { val: '8888.9%', lbl: 'Engagement Rate' }
+      ],
+      profileLinks: [
+        { label: 'Instagram', url: 'https://www.instagram.com/thehairgrid_/' }
+      ],
+      desc: 'Hair and beauty brand curating the finest looks, trends, and inspiration for natural and styled hair. Building a community of hair enthusiasts across Instagram.',
+      achievements: [
+        'Built and managed Instagram community around hair inspiration and trends',
+        'Curated high-engagement visual content showcasing natural and styled hair',
+        'Developed a consistent aesthetic that strengthened brand recognition',
+        'Drove follower growth through trend-led and community-focused content',
+        'Increased post reach through strategic hashtag and engagement tactics'
+      ],
+      modalStats: [
+        { val: '40+', lbl: 'Total Followers' },
+        { val: '4K+', lbl: 'Reach / Impressions' },
+        { val: '8888.9%', lbl: 'Engagement Rate' },
+        { val: 'Hair & Beauty', lbl: 'Sector' }
+      ],
+      feed: [
+        { src: 'feed_hairgrid_1.jpg', bg: 'linear-gradient(135deg,#1a0e06,#3d2210)', likes: '--' },
+        { src: 'feed_hairgrid_2.jpg', bg: 'linear-gradient(135deg,#221408,#4a2a14)', likes: '--' },
+        { src: 'feed_hairgrid_3.jpg', bg: 'linear-gradient(135deg,#1e1006,#40240e)', likes: '--' },
+        { src: 'feed_hairgrid_4.jpg', bg: 'linear-gradient(135deg,#201208,#3e2010)', likes: '--' },
+        { src: 'feed_hairgrid_5.jpg', bg: 'linear-gradient(135deg,#1c0e04,#3a1e0c)', likes: '--' },
+        { src: 'feed_hairgrid_6.jpg', bg: 'linear-gradient(135deg,#241408,#4c2818)', likes: '--' }
+      ]
+    },
+    {
+      id: 'contentgurl',
+      name: 'ContentGurl.Co',
+      handle: '@thecontentgurl.co',
+      platforms: ['Instagram'],
+      cover: 'linear-gradient(135deg, #1a0830 0%, #3d0f6b 55%, #6b1fa8 100%)',
+      avatarBg: 'linear-gradient(135deg, #7c3aed, #c026d3)',
+      initials: 'CG',
+      stats: [
+        { val: '100+', lbl: 'Total Followers' },
+        { val: '5K+', lbl: 'Reach / Impressions' },
+        { val: '4132%', lbl: 'Engagement Rate' }
+      ],
+      profileLinks: [
+        { label: 'Instagram', url: 'https://www.instagram.com/thecontentgurl.co/' }
+      ],
+      desc: 'Full-service marketing agency helping brands build powerful digital presences — content creation, strategy, and social media management tailored for growth.',
+      achievements: [
+        'Managed brand content strategy and social media calendar',
+        'Produced scroll-stopping content aligned with agency positioning',
+        'Grew Instagram following and engagement through targeted content',
+        'Developed brand voice and visual identity across all platforms',
+        'Supported client acquisition through compelling agency showcase content'
+      ],
+      modalStats: [
+        { val: '100+', lbl: 'Total Followers' },
+        { val: '5K+', lbl: 'Reach / Impressions' },
+        { val: '4132%', lbl: 'Engagement Rate' },
+        { val: 'Marketing Agency', lbl: 'Sector' }
+      ],
+      feed: [
+        { src: 'feed_contentgurl_1.jpg', bg: 'linear-gradient(135deg,#1a0830,#3d0f6b)', likes: '--' },
+        { src: 'feed_contentgurl_2.jpg', bg: 'linear-gradient(135deg,#22103a,#4a1878)', likes: '--' },
+        { src: 'feed_contentgurl_3.jpg', bg: 'linear-gradient(135deg,#1e0c36,#451470)', likes: '--' },
+        { src: 'feed_contentgurl_4.jpg', bg: 'linear-gradient(135deg,#200e38,#481678)', likes: '--' },
+        { src: 'feed_contentgurl_5.jpg', bg: 'linear-gradient(135deg,#1c0a30,#3e1068)', likes: '--' },
+        { src: 'feed_contentgurl_6.jpg', bg: 'linear-gradient(135deg,#240e3c,#4e1a80)', likes: '--' }
       ]
     },
     {
@@ -849,9 +931,9 @@
       avatarBg: 'linear-gradient(135deg, #1e6e7a, #2ea8c0)',
       initials: 'IW',
       stats: [
-        { val: '6K+', lbl: 'LinkedIn Followers' },
-        { val: '500+', lbl: 'Connections' },
-        { val: '3', lbl: 'Platforms' }
+        { val: '12K+', lbl: 'Total Followers' },
+        { val: '7K+', lbl: 'Reach / Impressions' },
+        { val: '58.3%', lbl: 'Engagement Rate' }
       ],
       profileLinks: [
         { label: 'Instagram', url: 'https://www.instagram.com/isimemewhyte/' },
@@ -860,25 +942,23 @@
       ],
       desc: 'Development professional, certified project manager, sustainability advocate, and speaker. Empowering leaders and organisations across Africa with field-grounded expertise.',
       achievements: [
-        'Built LinkedIn personal brand to 6K+ followers from Ikpoba-Okha, Edo State',
-        'Amplified thought leadership content on sustainability and project delivery',
+        'Built LinkedIn personal brand to 12K+ followers',
+        'Amplified thought leadership content on MSME development and sustainability',
         'Managed multi-platform visibility across Instagram, Facebook, and LinkedIn',
-        'Supported personal brand positioning as a keynote speaker at Project Leadership Summit',
-        'Drove engagement on publications including co-authored SE4G step-by-step book'
       ],
       modalStats: [
-        { val: '6K+', lbl: 'LinkedIn Followers' },
-        { val: '500+', lbl: 'LinkedIn Connections' },
-        { val: '3', lbl: 'Platforms Managed' },
-        { val: 'Nigeria', lbl: 'Based In' }
+        { val: '12K+', lbl: 'Total Followers' },
+        { val: '7K+', lbl: 'Reach / Impressions' },
+        { val: '58.3%', lbl: 'Engagement Rate' },
+        { val: 'Personal Brand', lbl: 'Sector' }
       ],
       feed: [
-        { emoji: '\uD83C\uDFA4', bg: 'linear-gradient(135deg,#071424,#122840)', likes: '—' },
-        { emoji: '\uD83D\uDCCA', bg: 'linear-gradient(135deg,#0e1e38,#1e3458)', likes: '—' },
-        { emoji: '\uD83C\uDF31', bg: 'linear-gradient(135deg,#0c1830,#183050)', likes: '—' },
-        { emoji: '\uD83E\uDD1D', bg: 'linear-gradient(135deg,#101e3a,#1c3460)', likes: '—' },
-        { emoji: '\uD83D\uDCDD', bg: 'linear-gradient(135deg,#0a1830,#162e50)', likes: '—' },
-        { emoji: '\uD83D\uDCA1', bg: 'linear-gradient(135deg,#0e2038,#1a3660)', likes: '—' }
+        { src: 'feed_isimeme_1.jpg', bg: 'linear-gradient(135deg,#071424,#122840)', likes: '--' },
+        { src: 'feed_isimeme_2.jpg', bg: 'linear-gradient(135deg,#0e1e38,#1e3458)', likes: '--' },
+        { src: 'feed_isimeme_3.jpg', bg: 'linear-gradient(135deg,#0c1830,#183050)', likes: '--' },
+        { src: 'feed_isimeme_4.jpg', bg: 'linear-gradient(135deg,#101e3a,#1c3460)', likes: '--' },
+        { src: 'feed_isimeme_5.jpg', bg: 'linear-gradient(135deg,#0a1830,#162e50)', likes: '--' },
+        { src: 'feed_isimeme_6.jpg', bg: 'linear-gradient(135deg,#0e2038,#1a3660)', likes: '--' }
       ]
     },
     {
@@ -890,36 +970,35 @@
       avatarBg: 'linear-gradient(135deg, #1a8c50, #30c468)',
       initials: 'GH',
       stats: [
-        { val: '1.6K+', lbl: 'LinkedIn Followers' },
-        { val: '2015', lbl: 'Founded' },
-        { val: '2', lbl: 'LinkedIn Pages' }
+        { val: '17K+', lbl: 'Total Followers' },
+        { val: '30K+', lbl: 'Reach / Impressions' },
+        { val: '170.338%', lbl: 'Engagement Rate' }
       ],
       profileLinks: [
         { label: 'Facebook', url: 'https://www.facebook.com/share/1DME1XaxV1/' },
-        { label: 'LinkedIn — Business', url: 'https://www.linkedin.com/company/genius-hub-business-services/' },
-        { label: 'LinkedIn — Initiative', url: 'https://www.linkedin.com/company/genius-hub-global-initiative/' }
+        { label: 'LinkedIn Business', url: 'https://www.linkedin.com/company/genius-hub-business-services/' },
+        { label: 'LinkedIn Initiative', url: 'https://www.linkedin.com/company/genius-hub-global-initiative/' }
       ],
       desc: 'EdTech and vocational training organisation bridging the skills gap in Africa through TVET, digital skills, entrepreneurship, and film-making. Benin City, Nigeria.',
       achievements: [
-        'Managed two LinkedIn pages — Business Services (827 followers) and Global Initiative (798 followers)',
         'Built content strategy around youth empowerment, women\'s education and digital skills',
         'Amplified programmes including Fashion AI, Web Dev, UI/UX, and Photography training',
-        'Coordinated social campaigns for Radio Girls, GSMP, and Young Girls Foundation',
+        'Coordinated social campaigns ',
         'Drove awareness for mental health and psychosocial support programmes via social media'
       ],
       modalStats: [
-        { val: '1.6K+', lbl: 'Combined LinkedIn Followers' },
-        { val: '827', lbl: 'Business Services Page' },
-        { val: '798', lbl: 'Global Initiative Page' },
-        { val: '2015', lbl: 'Organisation Founded' }
+        { val: '17K+', lbl: 'Total Followers' },
+        { val: '30K+', lbl: 'Reach / Impressions' },
+        { val: '170.338%', lbl: 'Engagement Rate' },
+        { val: 'EdTech / NGO', lbl: 'Sector' }
       ],
       feed: [
-        { emoji: '\uD83C\uDF93', bg: 'linear-gradient(135deg,#061a0c,#0e3820)', likes: '—' },
-        { emoji: '\uD83D\uDCBB', bg: 'linear-gradient(135deg,#0a2010,#142e1a)', likes: '—' },
-        { emoji: '\u2702\uFE0F', bg: 'linear-gradient(135deg,#0c2412,#163620)', likes: '—' },
-        { emoji: '\uD83C\uDFAC', bg: 'linear-gradient(135deg,#081c0e,#122a18)', likes: '—' },
-        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#0e2814,#1a381c)', likes: '—' },
-        { emoji: '\uD83D\uDC69\u200D\uD83D\uDCBB', bg: 'linear-gradient(135deg,#0a2010,#162c1c)', likes: '—' }
+        { bg: 'linear-gradient(135deg,#061a0c,#0e3820)', likes: '--' },
+        { bg: 'linear-gradient(135deg,#0a2010,#142e1a)', likes: '--' },
+        { bg: 'linear-gradient(135deg,#0c2412,#163620)', likes: '--' },
+        { bg: 'linear-gradient(135deg,#081c0e,#122a18)', likes: '--' },
+        { bg: 'linear-gradient(135deg,#0e2814,#1a381c)', likes: '--' },
+        { bg: 'linear-gradient(135deg,#0a2010,#162c1c)', likes: '--' }
       ]
     },
     {
@@ -931,9 +1010,9 @@
       avatarBg: 'linear-gradient(135deg, #b83060, #e05080)',
       initials: 'HM',
       stats: [
-        { val: '223*', lbl: 'LinkedIn Followers' },
-        { val: '3', lbl: 'Platforms' },
-        { val: 'NGO', lbl: 'Sector' }
+        { val: '4K+', lbl: 'Total Followers' },
+        { val: '50K+', lbl: 'Reach / Impressions' },
+        { val: '2071.3%', lbl: 'Engagement Rate' }
       ],
       profileLinks: [
         { label: 'Instagram', url: 'https://www.instagram.com/hermigrationvoice' },
@@ -943,26 +1022,25 @@
       desc: 'An initiative of Genius Hub enlightening women on the dangers of unsafe migration — tackling root causes through digital skills, entrepreneurship, and community empowerment.',
       achievements: [
         'Built multi-platform social presence across Instagram, Facebook and LinkedIn',
-        'Grew LinkedIn showcase page to 223+ followers',
         'Produced awareness content reaching women at risk of unsafe migration',
         'Amplified empowerment and digital skills training programmes',
         'Drove engagement on migration advocacy, reintegration and mental health support content'
       ],
       modalStats: [
-        { val: '223+', lbl: 'LinkedIn Followers' },
-        { val: '3', lbl: 'Platforms Managed' },
-        { val: 'NGO', lbl: 'Organisation Type' },
-        { val: 'Nigeria', lbl: 'Based In' }
+        { val: '4K+', lbl: 'Total Followers' },
+        { val: '50K+', lbl: 'Reach / Impressions' },
+        { val: '2071.3%', lbl: 'Engagement Rate' },
+        { val: 'NGO / Advocacy', lbl: 'Sector' }
       ],
       feed: [
-        { emoji: '\uD83C\uDF38', bg: 'linear-gradient(135deg,#280a20,#4a1438)', likes: '—' },
-        { emoji: '\u270A', bg: 'linear-gradient(135deg,#30102a,#561e48)', likes: '—' },
-        { emoji: '\uD83C\uDF0D', bg: 'linear-gradient(135deg,#2c0e24,#501a3e)', likes: '—' },
-        { emoji: '\uD83D\uDCAA', bg: 'linear-gradient(135deg,#280c22,#4c1840)', likes: '—' },
-        { emoji: '\uD83D\uDCE3', bg: 'linear-gradient(135deg,#2e0e26,#521c44)', likes: '—' },
-        { emoji: '\uD83E\uDD1D', bg: 'linear-gradient(135deg,#2a0c20,#4e1a3c)', likes: '—' }
+        { src: 'feed_hermigration_1.jpg', bg: 'linear-gradient(135deg,#280a20,#4a1438)', likes: '--' },
+        { src: 'feed_hermigration_2.jpg', bg: 'linear-gradient(135deg,#30102a,#561e48)', likes: '--' },
+        { src: 'feed_hermigration_3.jpg', bg: 'linear-gradient(135deg,#2c0e24,#501a3e)', likes: '--' },
+        { src: 'feed_hermigration_4.jpg', bg: 'linear-gradient(135deg,#280c22,#4c1840)', likes: '--' },
+        { src: 'feed_hermigration_5.jpg', bg: 'linear-gradient(135deg,#2e0e26,#521c44)', likes: '--' },
+        { src: 'feed_hermigration_6.jpg', bg: 'linear-gradient(135deg,#2a0c20,#4e1a3c)', likes: '--' }
       ]
-    }
+    },
   ];
 
   /* ── RENDER CARDS ── */
@@ -1033,17 +1111,20 @@
       b.achievements.map(function(a) { return '<li>' + a + '</li>'; }).join('');
     document.getElementById('modalLinks').innerHTML =
       b.profileLinks.map(function(l) {
-        return '<a class="modal-link-btn" href="' + l.url + '" target="_blank" rel="noopener">&#8599; ' + l.label + '</a>';
+        return '<a class="modal-link-btn" href="' + l.url + '" target="_blank" rel="noopener">' + l.label + '</a>';
       }).join('');
     document.getElementById('modalStatsGrid').innerHTML =
       b.modalStats.map(function(s) {
         return '<div class="modal-sbox"><div class="modal-sval">' + s.val + '</div><div class="modal-slbl">' + s.lbl + '</div></div>';
       }).join('');
     document.getElementById('modalFeed').innerHTML =
-      b.feed.map(function(f) {
+      b.feed.map(function(f, i) {
+        var inner = f.src
+          ? '<img src="' + f.src + '" alt="Post ' + (i + 1) + '" style="width:100%;height:100%;object-fit:cover;border-radius:7px;display:block;" />'
+          : '<span class="feed-num">IG 0' + (i + 1) + '</span>';
         return '<div class="feed-post" style="background:' + f.bg + '">' +
-          f.emoji +
-          '<div class="feed-likes">&#9829; ' + f.likes + '</div>' +
+          inner +
+          '<div class="feed-likes">' + f.likes + ' likes</div>' +
         '</div>';
       }).join('');
     document.getElementById('modalBox').scrollTop = 0;
